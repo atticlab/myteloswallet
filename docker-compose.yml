@@ -1,0 +1,31 @@
+version: '2'
+services:
+  nodejs:
+    container_name: myteloswallet-frontend-nodejs
+    build: docker/nodejs
+    volumes:
+      - ./:/src
+      - ./logs/nodejs:/logs
+    command: ["/entrypoint.sh"]
+    logging:
+      options:
+        max-size: 50m
+    env_file:
+      - .env
+
+  nginx:
+    restart: always
+    container_name: myteloswallet-frontend-nginx
+    image: nginx:latest
+    dns: 8.8.8.8
+    ports:
+      - "8082:80"
+    volumes:
+      - ./dist:/dist
+      - ./logs/nginx/:/logs
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    logging:
+      options:
+        max-size: 50m
+volumes:
+  storage:
