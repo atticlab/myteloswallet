@@ -3,16 +3,17 @@
        :data-color="backgroundColor"
        :data-active-color="activeColor">
     <div class="logo">
-      <a class="simple-text logo-mini"
-         href="https://www.creative-tim.com/product/vue-paper-dashboard-2-pro">
-          <div class="logo-img">
-              <img :src="logo" alt="">
-          </div>
-      </a>
-      <a class="simple-text logo-normal"
-         href="https://www.creative-tim.com/vue-paper-dashboard-2-pro">
-          {{ title }}
-      </a>
+      <router-link tag="a" class="simple-text logo-mini"
+                   :to="{ name: 'Dashboard' }">
+        <!--<div class="logo-img" >-->
+        <!--<font-awesome-icon icon="wallet" style="color: black"/>-->
+        <img src="/static/img/logo/atticlab-logo-500_white.png" alt="logo atticlab">
+        <!--</div>-->
+      </router-link>
+      <router-link tag="a" class="simple-text logo-normal"
+                   :to="{ name: 'Dashboard' }">
+        {{ title }}
+      </router-link>
     </div>
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <slot>
@@ -41,14 +42,14 @@
     props: {
       title: {
         type: String,
-        default: 'Vue PDP Pro',
-        description: 'Sidebar title'
+        default: 'My Eos Wallet',
+        description: 'Wallet for Eos'
       },
       backgroundColor: {
         type: String,
         default: 'black',
         validator: (value) => {
-          let acceptedValues = ['white', 'brown', 'black']
+          const acceptedValues = ['white', 'brown', 'black']
           return acceptedValues.indexOf(value) !== -1
         },
         description: 'Sidebar background color (white|brown|black)'
@@ -57,7 +58,7 @@
         type: String,
         default: 'success',
         validator: (value) => {
-          let acceptedValues = ['primary', 'info', 'success', 'warning', 'danger']
+          const acceptedValues = ['primary', 'info', 'success', 'warning', 'danger']
           return acceptedValues.indexOf(value) !== -1
         },
         description: 'Sidebar active text color (primary|info|success|warning|danger)'
@@ -85,7 +86,7 @@
     methods: {
       async initScrollBarAsync () {
         const PerfectScroll = await import('perfect-scrollbar')
-        PerfectScroll.initialize(this.$refs.sidebarScrollArea)
+        PerfectScroll.initialize(this.$refs.sidebarScrollArea, {suppressScrollX: true})
       }
     },
     mounted () {
@@ -97,7 +98,6 @@
       }
     }
   }
-
 </script>
 <style>
   @media (min-width: 992px) {

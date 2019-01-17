@@ -1,136 +1,106 @@
 export default [
   {
     name: 'Dashboard',
-    icon: 'nc-icon nc-bank',
-    path: '/admin/overview'
+    icon: 'nc-icon nc-album-2',
+    path: '/dashboard',
   },
   {
-    name: 'Pages',
+    name: 'Create Account',
+    icon: 'nc-icon nc-simple-add',
+    path: '/createacc',
+  },
+  {
+    name: 'Transfer',
+    icon: 'nc-icon nc-send',
+    path: '/transfer',
+  },
+  {
+    name: 'Voting',
     icon: 'nc-icon nc-book-bookmark',
     children: [
       {
-        name: 'Timeline',
-        path: '/pages/timeline'
+        name: 'Vote',
+        path: '/vote',
       },
       {
-        name: 'User Profile',
-        path: '/pages/user'
+        name: 'Referendums',
+        path: '/referendums',
       },
       {
-        name: 'Login',
-        path: '/login'
+        name: 'Set Proxy',
+        path: '/setproxy',
       },
       {
-        name: 'Register',
-        path: '/register'
+        name: 'Unset Proxy',
+        path: '/unsetproxy',
       },
       {
-        name: 'Lock',
-        path: '/lock'
-      }
-    ]
+        name: 'Assign Proxy',
+        path: '/assignproxy',
+      },
+      {
+        name: 'Unassign Proxy',
+        path: '/unassignproxy',
+      },
+    ],
   },
   {
-    name: 'Components',
-    icon: 'nc-icon nc-layout-11',
+    name: 'Manage',
+    icon: 'nc-icon nc-circle-10',
     children: [{
-      name: 'Buttons',
-      path: '/components/buttons'
+      name: 'Advanced Permissions',
+      path: '/advancedpermission',
     },
-    {
-      name: 'Grid System',
-      path: '/components/grid-system'
-    },
-    {
-      name: 'Panels',
-      path: '/components/panels'
-    },
-    {
-      name: 'Sweet Alert',
-      path: '/components/sweet-alert'
-    },
-    {
-      name: 'Notifications',
-      path: '/components/notifications'
-    },
-    {
-      name: 'Icons',
-      path: '/components/icons'
-    },
-    {
-      name: 'Typography',
-      path: '/components/typography'
-    }]
+      {
+        name: 'Link Auth',
+        path: '/linkauth',
+      },
+      {
+        name: 'Permissions',
+        path: '/permission',
+      },
+      {
+        name: 'Stake',
+        path: '/stake',
+      },
+      {
+        name: 'Ram',
+        path: '/ram',
+      },
+      {
+        name: 'Refund',
+        path: '/refund',
+      },
+      {
+        name: 'Name Auction',
+        path: '/nameauction',
+      }],
   },
   {
-    name: 'Forms',
-    icon: 'nc-icon nc-ruler-pencil',
+    name: 'Producer',
+    icon: 'nc-icon nc-trophy',
     children: [{
-      name: 'Regular Forms',
-      path: '/forms/regular'
+      name: 'Claim Rewards',
+      path: '/claimrewards',
     },
-    {
-      name: 'Extended Forms',
-      path: '/forms/extended'
-    },
-    {
-      name: 'Validation Forms',
-      path: '/forms/validation'
-    },
-    {
-      name: 'Wizard',
-      path: '/forms/wizard'
-    }
-    ]
+      {
+        name: 'Register Producer',
+        path: '/registerproducer',
+      },
+      {
+        name: 'Unregister Producer',
+        path: '/unregisterproducer',
+      },
+    ],
   },
   {
-    name: 'Table List',
-    icon: 'nc-icon nc-single-copy-04',
-    collapsed: true,
-    children: [{
-      name: 'Regular Tables',
-      path: '/table-list/regular'
-    },
-    {
-      name: 'Extended Tables',
-      path: '/table-list/extended'
-    },
-    {
-      name: 'Paginated Tables',
-      path: '/table-list/paginated'
-    }
-    ]
+    name: 'Faq',
+    icon: 'nc-icon nc-alert-circle-i',
+    path: '/faq',
   },
   {
-    name: 'Maps',
-    icon: 'nc-icon nc-pin-3',
-    children: [{
-      name: 'Google Maps',
-      path: '/maps/google'
-    },
-    {
-      name: 'Full Screen Maps',
-      path: '/maps/full-screen'
-    },
-    {
-      name: 'Vector Maps',
-      path: '/maps/vector-map'
-    }
-    ]
-  },
-  {
-    name: 'Widgets',
-    icon: 'nc-icon nc-box',
-    path: '/admin/widgets'
-  },
-  {
-    name: 'Charts',
-    icon: 'nc-icon nc-chart-bar-32',
-    path: '/charts'
-  },
-  {
-    name: 'Calendar',
-    icon: 'nc-icon nc-calendar-60',
-    path: '/calendar'
-  },
-]
+    name: 'Constitution',
+    icon: 'nc-icon nc-hat-3',
+    path: '/constitution',
+  }
+];

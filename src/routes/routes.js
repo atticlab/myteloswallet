@@ -1,242 +1,176 @@
 import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
-// Dashboard pages
-const Overview = () => import(/* webpackChunkName: "widgets" */ 'src/components/Dashboard/Views/Dashboard/Overview.vue')
-const Widgets = () => import(/* webpackChunkName: "widgets" */ 'src/components/Dashboard/Views/Dashboard/Widgets.vue')
 
-// Pages
-import User from 'src/components/Dashboard/Views/Pages/UserProfile.vue'
-import TimeLine from 'src/components/Dashboard/Views/Pages/TimeLinePage.vue'
-import Login from 'src/components/Dashboard/Views/Pages/Login.vue'
-import Register from 'src/components/Dashboard/Views/Pages/Register.vue'
-import Lock from 'src/components/Dashboard/Views/Pages/Lock.vue'
+const MobileDevice = () => import(/* webpackChunkName: "mobile" */ '../components/MobileDevice.vue')
+// Actions (general)
+const Action = () => import(/* webpackChunkName: "action" */ 'src/components/Wallet/Action.vue')
+const Dashboard = () => import(/* webpackChunkName: "dashboard" */ 'src/components/Wallet/Dashboard.vue')
+const Transfer = () => import(/* webpackChunkName: "transfer" */ 'src/components/Wallet/Actions/Transfer.vue')
+const CreateAccount = () => import(/* webpackChunkName: "createacc" */ 'src/components/Wallet/Actions/CreateAccount.vue')
 
-// Components pages
-import Buttons from 'src/components/Dashboard/Views/Components/Buttons.vue'
-import GridSystem from 'src/components/Dashboard/Views/Components/GridSystem.vue'
-import Panels from 'src/components/Dashboard/Views/Components/Panels.vue'
-import SweetAlert from 'src/components/Dashboard/Views/Components/SweetAlert.vue'
-import Notifications from 'src/components/Dashboard/Views/Components/Notifications.vue'
-import Icons from 'src/components/Dashboard/Views/Components/Icons.vue'
-import Typography from 'src/components/Dashboard/Views/Components/Typography.vue'
+// proxy
+const SetProxy = () => import(/* webpackChunkName: "setproxy" */ 'src/components/Wallet/Actions/proxy/SetProxy.vue')
+const AssignProxy = () => import(/* webpackChunkName: "assignProxy" */ 'src/components/Wallet/Actions/proxy/AssignProxy.vue')
+const UnAssignProxy = () => import(/* webpackChunkName: "unassignProxy" */ 'src/components/Wallet/Actions/proxy/UnAssignProxy.vue')
+const UnsetProxy = () => import(/* webpackChunkName: "unsetProxy" */ 'src/components/Wallet/Actions/proxy/UnsetProxy.vue')
+const Vote = () => import(/* webpackChunkName: "vote" */ 'src/components/Wallet/Actions/proxy/Vote')
+const Referendums = () => import(/* webpackChunkName: "referendums" */ 'src/components/Wallet/Actions/proxy/Referendums')
 
-// Forms pages
-const RegularForms  = () => import(/* webpackChunkName: "forms" */ 'src/components/Dashboard/Views/Forms/RegularForms.vue')
-const ExtendedForms = () => import(/* webpackChunkName: "forms" */ 'src/components/Dashboard/Views/Forms/ExtendedForms.vue');
-const ValidationForms = () => import(/* webpackChunkName: "forms" */ 'src/components/Dashboard/Views/Forms/ValidationForms.vue')
-const Wizard = () => import(/* webpackChunkName: "forms" */ 'src/components/Dashboard/Views/Forms/Wizard.vue');
+// account
+const AdvancedPermissions = () => import(/* webpackChunkName: "advancedpermissions" */ 'src/components/Wallet/Actions/account/AdvancedPermissions.vue')
+const LinkAuth = () => import(/* webpackChunkName: "LinkAuth" */ 'src/components/Wallet/Actions/account/LinkAuth.vue')
+const Permissions = () => import(/* webpackChunkName: "Permissions" */ 'src/components/Wallet/Actions/account/Permissions.vue')
+const Ram = () => import(/* webpackChunkName: "Ram" */ 'src/components/Wallet/Actions/account/Ram.vue')
+const Refund = () => import(/* webpackChunkName: "Refund" */ 'src/components/Wallet/Actions/account/Refund.vue')
+const Stake = () => import(/* webpackChunkName: "Stake" */ 'src/components/Wallet/Actions/account/Stake.vue')
+const NameAuction = () => import(/* webpackChunkName: "vote" */ 'src/components/Wallet/Actions/account/NameAuction.vue')
 
-// TableList pages
-const RegularTables = () => import(/* webpackChunkName: "tables" */ 'src/components/Dashboard/Views/Tables/RegularTables.vue');
-const ExtendedTables = () => import(/* webpackChunkName: "tables" */ 'src/components/Dashboard/Views/Tables/ExtendedTables.vue');
-const PaginatedTables = () => import(/* webpackChunkName: "tables" */ 'src/components/Dashboard/Views/Tables/PaginatedTables.vue');
-// Maps pages
-const GoogleMaps = () => import(/* webpackChunkName: "maps" */ 'src/components/Dashboard/Views/Maps/GoogleMaps.vue')
-const FullScreenMap = () => import(/* webpackChunkName: "maps" */ 'src/components/Dashboard/Views/Maps/FullScreenMap.vue')
-const VectorMaps = () => import(/* webpackChunkName: "maps" */ 'src/components/Dashboard/Views/Maps/VectorMapsPage.vue');
+// block producer
+const ClaimRewards = () => import(/* webpackChunkName: "claimrewards" */ 'src/components/Wallet/Actions/blockProducer/ClaimRewards.vue')
+const RegisterProducer = () => import(/* webpackChunkName: "registerproducer" */ 'src/components/Wallet/Actions/blockProducer/RegisterProducer.vue')
+const UnregisterProducer = () => import(/* webpackChunkName: "unregisterproducer" */ 'src/components/Wallet/Actions/blockProducer/UnregisterProducer.vue')
 
-// Calendar
-import Calendar from 'src/components/Dashboard/Views/Calendar/CalendarRoute.vue'
-// Charts
-const Charts = () => import(/* webpackChunkName: "widgets" */ 'src/components/Dashboard/Views/Charts.vue')
-
-let componentsMenu = {
-  path: '/components',
-  component: DashboardLayout,
-  redirect: '/components/buttons',
-  children: [
-    {
-      path: 'buttons',
-      name: 'Buttons',
-      component: Buttons
-    },
-    {
-      path: 'grid-system',
-      name: 'Grid System',
-      component: GridSystem
-    },
-    {
-      path: 'panels',
-      name: 'Panels',
-      component: Panels
-    },
-    {
-      path: 'sweet-alert',
-      name: 'Sweet Alert',
-      component: SweetAlert
-    },
-    {
-      path: 'notifications',
-      name: 'Notifications',
-      component: Notifications
-    },
-    {
-      path: 'icons',
-      name: 'Icons',
-      component: Icons
-    },
-    {
-      path: 'typography',
-      name: 'Typography',
-      component: Typography
-    }
-
-  ]
-}
-let formsMenu = {
-  path: '/forms',
-  component: DashboardLayout,
-  redirect: '/forms/regular',
-  children: [
-    {
-      path: 'regular',
-      name: 'Regular Forms',
-      component: RegularForms
-    },
-    {
-      path: 'extended',
-      name: 'Extended Forms',
-      component: ExtendedForms
-    },
-    {
-      path: 'validation',
-      name: 'Validation Forms',
-      component: ValidationForms
-    },
-    {
-      path: 'wizard',
-      name: 'Wizard',
-      component: Wizard
-    }
-  ]
-}
-
-let tablesMenu = {
-  path: '/table-list',
-  component: DashboardLayout,
-  redirect: '/table-list/regular',
-  children: [
-    {
-      path: 'regular',
-      name: 'Regular Tables',
-      component: RegularTables
-    },
-    {
-      path: 'extended',
-      name: 'Extended Tables',
-      component: ExtendedTables
-    },
-    {
-      path: 'paginated',
-      name: 'Paginated Tables',
-      component: PaginatedTables
-    }]
-}
-
-let mapsMenu = {
-  path: '/maps',
-  component: DashboardLayout,
-  redirect: '/maps/google',
-  children: [
-    {
-      path: 'google',
-      name: 'Google Maps',
-      component: GoogleMaps
-    },
-    {
-      path: 'full-screen',
-      name: 'Full Screen Map',
-      component: FullScreenMap
-    },
-    {
-      path: 'vector-map',
-      name: 'Vector Map',
-      component: VectorMaps
-    }
-  ]
-}
-
-let pagesMenu = {
-  path: '/pages',
-  component: DashboardLayout,
-  redirect: '/pages/user',
-  children: [
-    {
-      path: 'user',
-      name: 'User Page',
-      component: User
-    },
-    {
-      path: 'timeline',
-      name: 'Timeline Page',
-      component: TimeLine
-    }
-  ]
-}
-
-let loginPage = {
-  path: '/login',
-  name: 'Login',
-  component: Login
-}
-
-let registerPage = {
-  path: '/register',
-  name: 'Register',
-  component: Register
-}
-
-let lockPage = {
-  path: '/lock',
-  name: 'Lock',
-  component: Lock
-}
+// other
+const Faq = () => import(/* webpackChunkName: "faq" */ 'src/components/Wallet/Faq.vue')
+const Constitution = () => import(/* webpackChunkName: "constitution" */ 'src/components/Wallet/Constitution.vue')
 
 const routes = [
   {
     path: '/',
+    name: 'Root',
     component: DashboardLayout,
-    redirect: '/admin/overview',
     children: [
       {
-        path: 'calendar',
-        name: 'Calendar',
-        component: Calendar
+        path: '',
+        redirect: { name: 'Dashboard' },
       },
       {
-        path: 'charts',
-        name: 'Charts',
-        component: Charts
-      }
-    ]
+        path: 'action',
+        name: 'Action',
+        component: Action,
+        children: [
+          {
+            path: '/dashboard',
+            name: 'Dashboard',
+            component: Dashboard,
+          },
+          {
+            path: '/transfer',
+            name: 'Transfer',
+            component: Transfer,
+          },
+          {
+            path: '/createacc',
+            name: 'CreateAccount',
+            component: CreateAccount,
+          },
+          {
+            path: '/vote',
+            name: 'Vote',
+            component: Vote,
+          },
+          {
+            path: '/referendums',
+            name: 'Referendums',
+            component: Referendums,
+          },
+          {
+            path: '/setproxy',
+            name: 'SetProxy',
+            component: SetProxy,
+          },
+          {
+            path: '/assignproxy',
+            name: 'AssignProxy',
+            component: AssignProxy,
+          },
+          {
+            path: '/unassignproxy',
+            name: 'UnAssignProxy',
+            component: UnAssignProxy,
+          },
+          {
+            path: '/unsetproxy',
+            name: 'UnsetProxy',
+            component: UnsetProxy,
+          },
+          {
+            path: '/advancedpermission',
+            name: 'AdvancedPermissions',
+            component: AdvancedPermissions,
+          },
+          {
+            path: '/linkauth',
+            name: 'LinkAuth',
+            component: LinkAuth,
+          },
+          {
+            path: '/permission',
+            name: 'Permissions',
+            component: Permissions,
+          },
+          {
+            path: '/ram',
+            name: 'Ram',
+            component: Ram,
+          },
+          {
+            path: '/refund',
+            name: 'Refund',
+            component: Refund,
+          },
+          {
+            path: '/stake',
+            name: 'Stake',
+            component: Stake,
+          },
+          {
+            path: '/nameauction',
+            name: 'NameAuction',
+            component: NameAuction,
+          },
+          {
+            path: '/claimrewards',
+            name: 'ClaimRewards',
+            component: ClaimRewards,
+          },
+          {
+            path: '/registerproducer',
+            name: 'RegisterProducer',
+            component: RegisterProducer,
+          },
+          {
+            path: '/unregisterproducer',
+            name: 'UnregisterProducer',
+            component: UnregisterProducer,
+          },
+        ],
+      },
+      {
+        path: '/faq',
+        name: 'Faq',
+        component: Faq,
+      },
+      {
+        path: '/constitution',
+        name: 'Constitution',
+        component: Constitution,
+      },
+      {
+        path: '/voteatticlab',
+        beforeEnter(to, from, next) {
+          window.location = 'https://atticlab.net/vote/';
+        },
+      }],
   },
-  componentsMenu,
-  formsMenu,
-  tablesMenu,
-  mapsMenu,
-  pagesMenu,
-  loginPage,
-  registerPage,
-  lockPage,
   {
-    path: '/admin',
-    component: DashboardLayout,
-    redirect: '/admin/overview',
-    children: [
-      {
-        path: 'overview',
-        name: 'Overview',
-        component: Overview
-      },
-      {
-        path: 'widgets',
-        name: 'Widgets',
-        component: Widgets
-      }
-    ]
+    path: '/mobile',
+    name: 'MobileDevice',
+    component: MobileDevice,
   },
-  {path: '*', component: NotFound}
+  { path: '*', component: NotFound },
 ];
 
-export default routes
+
+export default routes;
