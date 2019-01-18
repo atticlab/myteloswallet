@@ -43,6 +43,20 @@ export default {
     }
   },
 
+  [ActionType.SET_TOKENLIST]: (state, val) => {
+    state.tokenList = val;
+  },
+
+  [ActionType.SET_TOKENBALANCE]: (state, val) => {
+    if (!val || !state.tokenList) return;
+    const tokenObj = state.tokenList.find(obj => obj.symbol === val.symbol);
+    if (tokenObj) {
+      tokenObj.balance = val.balance.length ? val.balance[0] : null;
+    } else {
+      state.tokenList.push({ symbol: val.symbol, balance: val.balance[0] });
+    }
+  },
+
   [ActionType.SET_AIRGRABS]: (state, val) => {
     state.airgrabs = val;
   },

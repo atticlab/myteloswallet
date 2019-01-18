@@ -22,10 +22,10 @@ export default [
         name: 'Vote',
         path: '/vote',
       },
-      // {
-      //   name: 'Referendums',
-      //   path: '/referendums',
-      // },
+      {
+        name: 'Referendums',
+        path: '/referendums',
+      },
       {
         name: 'Set Proxy',
         path: '/setproxy',
@@ -93,11 +93,11 @@ export default [
     },
     ],
   },
-  // {
-  //   name: 'Airgrab Tokens',
-  //   icon: 'nc-icon nc-briefcase-24',
-  //   path: '/airgrabtokens',
-  // },
+  {
+    name: 'Airgrab Tokens',
+    icon: 'nc-icon nc-briefcase-24',
+    path: '/airgrabtokens',
+  },
   {
     name: 'Faq',
     icon: 'nc-icon nc-alert-circle-i',
@@ -107,5 +107,10 @@ export default [
     name: 'Constitution',
     icon: 'nc-icon nc-hat-3',
     path: '/constitution',
-  }
+  },
+  // {
+  //   name: 'Vote offline',
+  //   icon: 'nc-icon nc-favourite-28',
+  //   path: '/voteatticlab',
+  // },
 ];

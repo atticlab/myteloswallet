@@ -37,56 +37,22 @@
       </div>
     </div>
   </transition>
-    <!--<div class="col-lg-3 col-sm-6">-->
-      <!--<circle-chart-card :percentage="getRamPercentage"-->
-                         <!--title="RAM"-->
-                         <!--:description="getRamUsed + ' / ' + getRamTotal"-->
-                         <!--color="#fcc468" class="card-resources">-->
-      <!--</circle-chart-card>-->
-    <!--</div>-->
-
-    <!--<div class="col-lg-3 col-sm-6">-->
-      <!--<circle-chart-card :percentage="getCpuPercentage"-->
-                         <!--title="CPU"-->
-                         <!--:description="getCpuUsed + ' / ' + getCpuTotal"-->
-                         <!--color="#f17e5d" class="card-resources">-->
-      <!--</circle-chart-card>-->
-    <!--</div>-->
-
-    <!--<div class="col-lg-3 col-sm-6">-->
-      <!--<circle-chart-card :percentage="getNetPercentage"-->
-                         <!--title="NET"-->
-                         <!--:description="getNetUsed + ' / ' + getNetTotal"-->
-                         <!--color="#66615b" class="card-resources">-->
-      <!--</circle-chart-card>-->
-    <!--</div>-->
-  <!--</div>-->
-  <transition name="fade" mode="out-in">
-    <div class="row" v-if="getTokens.length">
-      <div class="col-12">
-        <div class="card card-resources">
-          <div class="card-header text-center"><h5 class="card-title">Tokens</h5></div>
-          <div class="card-body text-center">
-            <div class="row">
-              <div class="col-2" v-for="(token, i) in getTokens" :key="i">
-                <p>{{ token.balance }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--<div class="row">-->
-      <!--<div class="col" v-for="(token, i) in getTokens" :key="i">-->
+  <!--<transition name="fade" mode="out-in">-->
+    <!--<div class="row" v-if="getTokens.length">-->
+      <!--<div class="col-12">-->
         <!--<div class="card card-resources">-->
-          <!--<div class="card-header text-center"><h5 class="card-title">{{ token.account.toUpperCase() }}</h5></div>-->
+          <!--<div class="card-header text-center"><h5 class="card-title">Tokens</h5></div>-->
           <!--<div class="card-body text-center">-->
-            <!--<p>Total: {{ token.balance }}</p>-->
+            <!--<div class="row">-->
+              <!--<div class="col-2" v-for="(token, i) in getTokens" :key="i">-->
+                <!--<p>{{ token.balance }}</p>-->
+              <!--</div>-->
+            <!--</div>-->
           <!--</div>-->
         <!--</div>-->
       <!--</div>-->
     <!--</div>-->
-  </transition>
+  <!--</transition>-->
   <router-view/>
   <div class="card" v-if="$router.currentRoute.name !== 'Dashboard'">
       <div class="card-header"><h4 class="title">Blockchain Raw Data</h4></div>
@@ -108,6 +74,7 @@ export default {
     ...mapState([
       'transaction',
       'actionInfoPopUp',
+      'eosAccount',
     ]),
     ...mapGetters([
       'getBalance',

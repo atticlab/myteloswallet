@@ -19,16 +19,20 @@ function renderJSON(json, idForInsert) {
 }
 
 export default {
+  isMobileDevice: () => {
+    return (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1)
+  },
   requestBalance: (eos, identityAccount, token) => {
     let args;
     if (identityAccount) {
       args = composeCurrencyBalanceRequest(identityAccount, token);
+      return eos.getCurrencyBalance(args.code, args.account, args.symbol)
+                .catch((e) => {
+                  console.error(e);
+                  return false;
+                });
     }
-    return eos.getCurrencyBalance(args.code, args.account, args.symbol)
-      .catch((e) => {
-        console.error(e);
-        return false;
-      });
+    return null
   },
 
   getFirstBalance: balance => ((balance) ? parseFloat(balance[0]) : 0),

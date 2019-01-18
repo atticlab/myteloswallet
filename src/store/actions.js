@@ -21,9 +21,17 @@ export default {
   [ActionType.SET_TRANSACTION]:
     ({ commit }, transaction) => commit(ActionType.SET_TRANSACTION, transaction),
 
+  [ActionType.SET_TOKENLIST]: ({ commit }, val) => commit(ActionType.SET_TOKENLIST, val),
+
+  [ActionType.SET_TOKENBALANCE]: ({ commit }, val) => commit(ActionType.SET_TOKENBALANCE, val),
+
   [ActionType.SET_AIRGRABS]: ({ commit }, val) => commit(ActionType.SET_AIRGRABS, val),
 
   [ActionType.SET_ACTIONINFOPOPUP]: ({ commit }, val) => commit(ActionType.SET_ACTIONINFOPOPUP, val),
+
+  [ActionType.SET_HARDWARE]: ({ commit }, hardware) => commit(ActionType.SET_HARDWARE, hardware),
+
+  [ActionType.SET_LEDGER_WALLET]: ({ commit }, ledgerWallet) => commit(ActionType.SET_LEDGER_WALLET, ledgerWallet),
 
   [ActionType.LOGOUT]: ({ commit }) => commit(ActionType.LOGOUT),
   [ActionType.RELOGIN_SCATTER_EOS]: ({ commit }) => commit(ActionType.RELOGIN_SCATTER_EOS),

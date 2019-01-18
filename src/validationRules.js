@@ -10,7 +10,7 @@ const lengthInUtf8Bytes = (str) => {
 export default [
   {
     name: 'accountExist',
-    getMessage: () => 'Account not exist',
+    getMessage: field => 'Account not exist',
     validate: (value) => {
       if (store.state.eos) {
         return store.state.eos.getAccount(value)
@@ -23,7 +23,7 @@ export default [
   },
   {
     name: 'accountNotExist',
-    getMessage: () => 'Account exist',
+    getMessage: field => 'Account exist',
     validate: (value) => {
       if (store.state.eos) {
         return store.state.eos.getAccount(value)
@@ -36,7 +36,7 @@ export default [
   },
   {
     name: 'accountNotExistWitoutLogin',
-    getMessage: () => 'Account exist',
+    getMessage: field => 'Account exist',
     validate: (value) => {
       if (store.state.eosApi) {
         return store.state.eosApi.getAccount(value)
@@ -48,7 +48,7 @@ export default [
   },
   {
     name: 'validateMemo',
-    getMessage: () => 'Too long value',
+    getMessage: field => 'Too long value',
     validate: (value) => {
       if (lengthInUtf8Bytes(value) <= 255) {
         return true;
@@ -59,7 +59,7 @@ export default [
   },
   {
     name: 'noMoreThenBalance',
-    getMessage: () => 'Invalid value',
+    getMessage: field => 'Invalid value',
     validate: (value) => {
       if (value <= store.getters.getBalance) {
         return true;
@@ -69,7 +69,7 @@ export default [
   },
   {
     name: 'publicKey',
-    getMessage: () => 'Invalid public key',
+    getMessage: field => 'Invalid public key',
     validate: (key) => {
       if (typeof key === 'string' && key.length === 53 && key.substr(0, 3) === 'EOS') {
         return true;
@@ -79,7 +79,7 @@ export default [
   },
   {
     name: 'validateEosAmount',
-    getMessage: () => 'Invalid amount',
+    getMessage: field => 'Invalid amount',
     validate: (value) => {
       let val = value;
       if (typeof value === 'number') {
