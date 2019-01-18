@@ -147,7 +147,6 @@ const getters = {
     protocol: state.currentNode.protocol,
     host: state.currentNode.link,
     port: state.currentNode.port,
-    // httpEndpoint: `${process.env.VUE_APP_EOS_PROTOCOL}://${process.env.VUE_APP_EOS_HOST}:${process.env.VUE_APP_EOS_PORT}`,
     httpEndpoint: state.currentNode.protocol + '://' + state.currentNode.link + ':' + state.currentNode.port,
     expireInSeconds: 60,
     broadcast: true,
