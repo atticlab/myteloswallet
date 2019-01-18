@@ -1,0 +1,61 @@
+{
+  "name": "myteloswallet",
+  "version": "2.0.0",
+  "private": true,
+  "description": "My Telos Wallet",
+  "author": "Evgeny Fern <evgeny.fern@gmail.com>",
+  "scripts": {
+    "build": "vue-cli-service build --no-clean",
+    "dev": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "chart.js": "^2.7.2",
+    "d3": "^5.7.0",
+    "datamaps": "^0.5.9",
+    "element-ui": "^2.4.11",
+    "eosjs": "^16.0.9",
+    "fullcalendar": "^4.0.0-alpha.3",
+    "google-maps": "^3.2.1",
+    "json-formatter-js": "^2.2.1",
+    "lodash": "^4.17.11",
+    "microseconds": "^0.1.0",
+    "nprogress": "^0.2.0",
+    "numeral": "^2.0.6",
+    "perfect-scrollbar": "0.7.1",
+    "scatterjs-core": "^2.7.7",
+    "scatterjs-plugin-eosjs": "^1.5.0",
+    "sweetalert2": "^6.11.4",
+    "topojson": "^3.0.2",
+    "vee-validate": "^2.1.4",
+    "vue": "^2.5.22",
+    "vue-analytics": "^5.16.0",
+    "vue-chartjs": "^3.3.2",
+    "vue-clickaway": "^2.2.2",
+    "vue-notifyjs": "^0.4.3",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue2-transitions": "^0.2.3",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "babel-plugin-component": "^1.1.1",
+    "es6-promise": "^4.2.4",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.22"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.0.0"
+  }
+}
