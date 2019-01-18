@@ -20,6 +20,8 @@ import Modal from './Modal'
 
 import TimeLine from './TimeLine/TimeLine'
 import TimeLineItem from './TimeLine/TimeLineItem'
+import Wizard from './Wizard/Wizard'
+import WizardTab from './Wizard/WizardTab'
 import IconCheckbox from './Inputs/IconCheckbox'
 
 
@@ -45,6 +47,7 @@ export {
   InfoSection,
   TimeLine,
   TimeLineItem,
+  Wizard,
   WizardTab,
   IconCheckbox
 }
