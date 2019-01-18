@@ -19,7 +19,7 @@
 
             <div class="row">
               <div class="col-12">
-                <fg-input label="Bid (in EOS)" type="number" v-model.number="bid" required
+                <fg-input label="Bid (in TLOS)" type="number" v-model.number="bid" required
                           name="bid" v-validate="modelValidation.bid" :error="getError('bid')"
                 ></fg-input>
               </div>
@@ -100,7 +100,7 @@ export default {
               data: {
                 bidder: this.getAccountName,
                 newname: this.newname,
-                bid: `${this.bid.toFixed(4)} EOS`,
+                bid: `${this.bid.toFixed(4)} TLOS`,
               },
             },
           ],

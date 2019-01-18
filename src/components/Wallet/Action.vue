@@ -101,6 +101,10 @@ export default {
         return false;
       }
 
+      if (this.transaction && this.transaction.name === 'AssertionError') {
+        return false;
+      }
+
       if (this.transaction && this.transaction.statusText === 'INCORRECT_DATA') {
         return false;
       }

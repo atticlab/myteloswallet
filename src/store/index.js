@@ -62,6 +62,7 @@ const state = {
   actionInfoPopUp: false,
   hardware: null,
   ledgerWallet: null,
+  currentToken: 'TLOS',
   nodeList: [
     {
       link: 'api.telosfoundation.io',

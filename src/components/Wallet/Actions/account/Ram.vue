@@ -19,14 +19,14 @@
 
               <div class="row">
                 <div class="col-md-6 col-12">
-                  <p class="category">In bytes / In EOS</p>
+                  <p class="category">In bytes / In {{currentToken}}</p>
                     <p-switch v-model="inEos">
                       <i class="fa fa-check" slot="on"></i>
                       <i class="fa fa-times" slot="off"></i>
                     </p-switch>
                 </div>
                 <div class="col-md-6 col-12">
-                  <fg-input :label="'Ram in ' + (inEos ? 'EOS' : 'bytes')" v-model.number="ramToBuy" required
+                  <fg-input :label="'Ram in ' + (inEos ? 'TLOS' : 'bytes')" v-model.number="ramToBuy" required
                             name="ramToBuy" v-validate="modelValidation.ramToBuy" :error="getError('ramToBuy')" data-vv-as="ram to buy"
                   ></fg-input>
                 </div>
@@ -156,7 +156,7 @@ export default {
               data: {
                 payer: this.getAccountName,
                 receiver: this.receiver,
-                quant: `${this.ramToBuy.toFixed(4)} EOS`,
+                quant: `${this.ramToBuy.toFixed(4)} ${this.currentToken}`,
               },
             },
           ],
@@ -241,6 +241,7 @@ export default {
     ...mapState([
       'eos',
       'eosAccount',
+      'currentToken',
     ]),
     ...mapGetters([
       'getAccountName',

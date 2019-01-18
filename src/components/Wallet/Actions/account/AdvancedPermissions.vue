@@ -81,7 +81,7 @@
       <div class="card">
         <div class="card-header"><h4 class="title">Help</h4></div>
         <div class="card-body pb-4">
-          <div><b>Caution:</b> this action makes your account irrecoverable. The permission structures of EOS accounts are complex, and they include parent-child relationships. Parent permissions can alter or remove child permissions. To add or modify permissions, Threshold must have a sum of permission weights. You can add, change and create new permissions. “Weight” is the amount of weight assigned to Threshold by Authority. To meet your multisig requirements, you can add or remove as many rows as you need.</div>
+          <div><b>Caution:</b> this action makes your account irrecoverable. The permission structures of TELOS accounts are complex, and they include parent-child relationships. Parent permissions can alter or remove child permissions. To add or modify permissions, Threshold must have a sum of permission weights. You can add, change and create new permissions. “Weight” is the amount of weight assigned to Threshold by Authority. To meet your multisig requirements, you can add or remove as many rows as you need.</div>
         </div>
       </div>
     </div>

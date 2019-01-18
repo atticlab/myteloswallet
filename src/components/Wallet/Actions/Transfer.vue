@@ -26,18 +26,14 @@
                 >
                 </fg-input>
               </div>
-              <div class="col-md-6 col-12 d-flex align-items-center pt-2">
-                <el-select class="select-primary"
-                           size="large"
-                           placeholder="Token"
-                           v-model="currentToken">
-                  <el-option v-for="token in getTokensWithEos"
-                             class="select-primary"
-                             :value="token.symbol"
-                             :label="token.symbol"
-                             :key="token.symbol">
-                  </el-option>
-                </el-select>
+              <div class="col-md-6 col-12">
+                <fg-input
+                  v-model="currentToken" label="Token"
+                  type="text" min="0"
+                  name="token"
+                  disabled
+                >
+                </fg-input>
               </div>
             </div>
 
@@ -61,7 +57,7 @@
         <div class="card">
           <div class="card-header"><h4 class="title">Help</h4></div>
           <div class="card-body pb-4">
-            <div>You can send EOS or EOS tokens to as many users as you like. Please be careful when checking the recipient’s address and remember the memo when sending tokens to exchange.</div>
+            <div>You can send TLOS to as many users as you like. Please be careful when checking the recipient’s address and remember the memo when sending tokens to exchange.</div>
           </div>
         </div>
       </div>
@@ -99,8 +95,7 @@ export default {
           required: false,
           validateMemo: true,
         },
-      },
-      currentToken: 'EOS',
+      }
     };
   },
   components: {
@@ -115,6 +110,7 @@ export default {
       'eosAccount',
       'tokenList',
       'balance',
+      'currentToken',
     ]),
     ...mapGetters([
       'getAccountName',
@@ -137,16 +133,15 @@ export default {
     },
     onTransfer() {
       if (!this.eos) {
-        bl.logInPopUP();
+        this.$bl.logInPopUP();
         return;
       }
-      const tokenObj = this.tokenList.find(token => token.symbol === this.currentToken);
-      if (!tokenObj) return;
+
       this.eos.transaction(
         {
           actions: [
             {
-              account: tokenObj.account,
+              account: 'eosio.token',
               name: 'transfer',
               authorization: [{
                 actor: this.getAccountName,
@@ -155,7 +150,7 @@ export default {
               data: {
                 from: this.getAccountName,
                 to: this.transferModel.toAccount,
-                quantity: `${this.transferModel.amount.toFixed(4)} ${tokenObj.symbol}`,
+                quantity: `${this.transferModel.amount.toFixed(4)} ${this.currentToken}`,
                 memo: this.transferModel.memo,
               },
             },
@@ -165,23 +160,23 @@ export default {
         .then((res) => {
           console.debug(`${this.$options.name} RESULT`, res);
           this[ActionType.SET_TRANSACTION](res);
-          bl.renderJSON(res, 'place-for-transaction');
-          bl.requestBalance(this.eos, this.eosAccount).then((respBalance) => {
+          this.$bl.renderJSON(res, 'place-for-transaction');
+          this.$bl.requestBalance(this.eos, this.eosAccount).then((respBalance) => {
             this[ActionType.SET_BALANCE](respBalance);
-            bl.logDebug('bl.requestBalance(eos).then...', respBalance);
+            this.$bl.logDebug('this.$bl.requestBalance(eos).then...', respBalance);
           });
           this.getTokenBalances();
         })
         .catch((e) => {
           this[ActionType.SET_TRANSACTION](e);
-          bl.handleError(e, 'place-for-transaction');
+          this.$bl.handleError(e, 'place-for-transaction');
         });
     },
     getTokenBalances() {
       this.tokenList.forEach((token) => {
-        bl.requestBalance(this.eos, this.eosAccount, token).then((respBalance) => {
+        this.$bl.requestBalance(this.eos, this.eosAccount, token).then((respBalance) => {
           this[ActionType.SET_TOKENBALANCE]({ balance: respBalance, symbol: token.symbol });
-          bl.logDebug(`bl.requestBalance(${token.symbol}).then...`, respBalance);
+          this.$bl.logDebug(`this.$bl.requestBalance(${token.symbol}).then...`, respBalance);
         });
       });
     },

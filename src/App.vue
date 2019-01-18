@@ -25,6 +25,16 @@
         })
       }
       this.doOnLoginDesktop()
+      this.initEosApi()
+      setInterval(() => {
+        this.balanceUpdate();
+      }, 20000);
+    },
+    watch: {
+      currentNode() {
+        this.initEosApi();
+        this.relogin();
+      },
     },
     methods: {
       ...mapActions([
@@ -43,6 +53,21 @@
         ActionType.LOGOUT,
         ActionType.RELOGIN_SCATTER_EOS,
       ]),
+      relogin() {
+        this.doOnLoginDesktop();
+      },
+      initEosApi() {
+        const eos = Eos(this.eosConfig);
+        this[ActionType.SET_EOS_JSAPI](eos);
+      },
+      noScatterAlert() {
+        swal({
+          title: 'No scatter detected!',
+          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter plugin or desktop application</a> and refresh this page.',
+          buttonsStyling: false,
+          confirmButtonClass: 'btn btn-info btn-fill',
+        });
+      },
       balanceUpdate() {
         if (this.eos && this.eosAccount) {
           this.$bl.requestBalance(this.eos, this.eosAccount).then((respBalance) => {
@@ -71,7 +96,7 @@
         this.$scatterjs.connect('My Telos Wallet', {initTimeout: 3500})
             .then((connected) => {
               if (!connected) {
-                // this.noScatterAlert()
+                this.noScatterAlert()
                 return false
               }
 
@@ -79,7 +104,6 @@
               window.scatter = null
               window.ScatterJS = null
 
-              console.log(this.eosConfig)
               this[ActionType.SET_SCATTER](scatter)
               const requiredFields = { accounts: [this.eosConfig] };
               return setTimeout(() => {
@@ -87,17 +111,17 @@
                        .then((identity) => {
                          if (!identity) return console.error('no identity')
                          vm[ActionType.SET_IDENTITY](identity)
-                         console.log(identity)
+                         // console.log(identity)
                          // console.dir(vm.$scatterjs)
                          const account = this.initIdentityAccount(identity);
                          vm[ActionType.SET_IDENTITY_ACCOUNT](account)
-                         console.log(account)
+                         // console.log(account)
                          // console.log(vm.eosConfig)
                          const eos = scatter.eos(vm.eosConfig, Eos, {expireInSeconds: 60})
                          vm[ActionType.SET_EOS_JS](eos)
 
                          eos.getAccount(account.name).then((respEosAccount) => {
-                           bl.logDebug(`getAccount('${account.name}').then((eosAccount) => ...`, respEosAccount);
+                           this.$bl.logDebug(`getAccount('${account.name}').then((eosAccount) => ...`, respEosAccount);
                            this[ActionType.SET_EOS_ACCOUNT](respEosAccount);
 
                            // this.getTokenList();

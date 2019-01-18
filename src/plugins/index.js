@@ -3,6 +3,7 @@ import VueNotify from 'vue-notifyjs'
 import VeeValidate, {Validator} from 'vee-validate'
 import VueAnalytics from 'vue-analytics'
 import VueResource from 'vue-resource'
+import VueClipboard from 'vue-clipboard2'
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 import GlobalComponents from '../globalComponents'
@@ -22,6 +23,7 @@ Vue.use(GlobalDirectives)
 Vue.use(GlobalComponents)
 Vue.use(VueNotify, {type: 'primary', timeout: 5000})
 Vue.use(SideBar, {sidebarLinks: sidebarLinks})
+Vue.use(VueClipboard)
 Vue.use(VeeValidate)
 locale.use(lang)
 

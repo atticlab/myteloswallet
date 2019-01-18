@@ -5,7 +5,7 @@ function composeCurrencyBalanceRequest(identityAccount, token) {
   return {
     code: token ? token.account : 'eosio.token',
     account: identityAccount.account_name,
-    symbol: token ? token.symbol : 'EOS',
+    symbol: token ? token.symbol : 'TLOS',
   };
 }
 
@@ -75,6 +75,15 @@ export default {
   ledgerAprove: () => {
     swal({
       title: 'Confirm transaction',
+      buttonsStyling: false,
+      showConfirmButton: true,
+      showCloseButton: true,
+      confirmButtonClass: 'btn btn-primary',
+    }).catch((e) => {});
+  },
+  nodeConnectFail: () => {
+    swal({
+      title: 'Node connect fail',
       buttonsStyling: false,
       showConfirmButton: true,
       showCloseButton: true,

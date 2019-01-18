@@ -19,12 +19,12 @@
 
               <div class="row">
                 <div class="col-md-6 col-12">
-                  <fg-input label="Cpu stake (in EOS)" v-model.number="cpuStake" required
+                  <fg-input label="Cpu stake (in TELOS)" v-model.number="cpuStake" required
                             name="cpuStake" v-validate="modelValidation.cpuStake" :error="getError('cpuStake')" data-vv-as="cpu Stake"
                   ></fg-input>
                 </div>
                 <div class="col-md-6 col-12">
-                  <fg-input title="Invalid value" label="Net stake (in EOS)" v-model.number="netStake" required
+                  <fg-input title="Invalid value" label="Net stake (in TELOS)" v-model.number="netStake" required
                             name="netStake" v-validate="modelValidation.netStake" :error="getError('netStake')" data-vv-as="net Stake"
                   ></fg-input>
                 </div>
@@ -56,7 +56,7 @@
         <div class="card">
           <div class="card-header"><h4 class="title">Help</h4></div>
           <div class="card-body pb-4">
-            <div>There are three resources running on the EOS network: CPU, NET and RAM. When staking, you delegate some access to CPU and NET. To stake your tokens, you need to follow the instructions tipped on the background. You can unstake tokens by clicking ‘unstake’, the period of set after the moment of clicking the button is three days.</div>
+            <div>There are three resources running on the TELOS network: CPU, NET and RAM. When staking, you delegate some access to CPU and NET. To stake your tokens, you need to follow the instructions tipped on the background. You can unstake tokens by clicking ‘unstake’, the period of set after the moment of clicking the button is three days.</div>
           </div>
         </div>
       </div>
@@ -81,12 +81,12 @@
 
               <div class="row">
                 <div class="col-md-6 col-12">
-                  <fg-input label="Cpu stake (in EOS)" v-model.number="cpuUnStake" required
+                  <fg-input label="Cpu stake (in TELOS)" v-model.number="cpuUnStake" required
                             name="cpuUnStake" v-validate="undelegatemodelValidation.cpuUnStake" :error="getError('cpuUnStake')" data-vv-as="cpu unStake"
                   ></fg-input>
                 </div>
                 <div class="col-md-6 col-12">
-                  <fg-input title="Invalid name" label="Net stake (in EOS)" v-model.number="netUnStake" required
+                  <fg-input title="Invalid name" label="Net stake (in TELOS)" v-model.number="netUnStake" required
                             name="netUnStake" v-validate="undelegatemodelValidation.netUnStake" :error="getError('netUnStake')" data-vv-as="net unStake"
                   ></fg-input>
                 </div>
@@ -199,8 +199,8 @@ export default {
             data: {
               from: this.getAccountName,
               receiver: this.recipient,
-              stake_net_quantity: `${this.netStake.toFixed(4)} EOS`,
-              stake_cpu_quantity: `${this.cpuStake.toFixed(4)} EOS`,
+              stake_net_quantity: `${this.netStake.toFixed(4)} ${this.currentToken}`,
+              stake_cpu_quantity: `${this.cpuStake.toFixed(4)} ${this.currentToken}`,
               transfer: this.transfer ? 1 : 0,
             },
           },
@@ -235,8 +235,8 @@ export default {
             data: {
               from: this.getAccountName,
               receiver: this.stakeHolder,
-              unstake_net_quantity: `${this.netUnStake.toFixed(4)} EOS`,
-              unstake_cpu_quantity: `${this.cpuUnStake.toFixed(4)} EOS`,
+              unstake_net_quantity: `${this.netUnStake.toFixed(4)} ${this.currentToken}`,
+              unstake_cpu_quantity: `${this.cpuUnStake.toFixed(4)} ${this.currentToken}`,
             },
           },
         ],
@@ -258,6 +258,7 @@ export default {
     ...mapState([
       'eos',
       'eosAccount',
+      'currentToken',
     ]),
     ...mapGetters([
       'getAccountName',
