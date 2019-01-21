@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm install
+yarn install
 
-npm run build
+yarn run build
