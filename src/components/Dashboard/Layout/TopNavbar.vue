@@ -53,7 +53,7 @@
                 <span class="d-lg-none d-md-block">Select node</span>
               </p>
             </a>
-            <a :class="['dropdown-item', { active: currentNode === node }]" href="#" v-for="(node, i) in nodeList" :key="i" @click="changeNode(node)">{{ node }}</a>
+            <a :class="['dropdown-item', { active: currentNode === node }]" href="#" v-for="(node, i) in nodeList" :key="i" @click="changeNode(node)">{{ node.link }}</a>
           </drop-down>
         </el-tooltip>
         <!--<li class="nav-item">-->

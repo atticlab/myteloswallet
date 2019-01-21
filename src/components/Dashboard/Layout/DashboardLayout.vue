@@ -2,7 +2,7 @@
   <div class="wrapper">
 
     <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
-      <user-menu @signInScatter="$emit('signInScatter')"></user-menu>
+      <user-menu @signInScatter="$emit('signInScatter')" @signInLedger="$emit('signInLedger')"></user-menu>
     </side-bar>
 
     <div class="main-panel">

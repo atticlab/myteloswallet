@@ -143,6 +143,7 @@ export default {
             threshold: this.threshold,
             keys: [],
             accounts: [],
+            waits: [],
           },
         },
       }];
@@ -171,8 +172,9 @@ export default {
       if (this.authorities.some(obj => obj.error)) {
         return;
       }
+
       this.eos.transaction({
-        actions,
+        actions
       })
         .then((res) => {
           console.debug(`${this.$options.name} RESULT`, res);

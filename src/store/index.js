@@ -5,6 +5,7 @@ import mutations from './mutations'
 import actions from './actions'
 import numeral from 'numeral'
 import us from 'microseconds'
+import { bip44Path } from 'src/models/ExternalWallet'
 
 Vue.use(Vuex)
 
@@ -153,19 +154,19 @@ const getters = {
     verbose: false,
     sign: true,
   }),
-  // eosConfigLedger: currentState => ({
-  //   blockchain: process.env.VUE_APP_BLOCKCHAIN,
-  //   chainId: process.env.VUE_APP_EOS_CHAIN_ID,
-  //   protocol: 'https',
-  //   host: state.currentNode.slice(8),
-  //   port: 443,
-  //   // httpEndpoint: `${process.env.VUE_APP_EOS_PROTOCOL}://${process.env.VUE_APP_EOS_HOST}:${process.env.VUE_APP_EOS_PORT}`,
-  //   httpEndpoint: state.currentNode,
-  //   expireInSeconds: 60,
-  //   broadcast: true,
-  //   verbose: false,
-  //   sign: false,
-  // }),
+  eosConfigLedger: currentState => ({
+    blockchain: "eos",
+    chainId: "4667b205c6838ef70ff7988f6e8257e8be0e1284a2f59699054a018f743b1d11",
+    protocol: state.currentNode.protocol,
+    host: state.currentNode.link,
+    port: state.currentNode.port,
+    httpEndpoint: state.currentNode.protocol + '://' + state.currentNode.link + ':' + state.currentNode.port,
+    expireInSeconds: 60,
+    broadcast: true,
+    verbose: false,
+    sign: false,
+    signProvider: transaction => currentState.ledgerWallet.interface.sign(bip44Path, transaction).then(r => r),
+  }),
   getAccountName: currentState => ((currentState.identityAccount) ? currentState.identityAccount.name : ''),
   getAuthority: currentState => ((currentState.identityAccount) ? currentState.identityAccount.authority : ''),
   userFullName: (currentState) => {
@@ -189,10 +190,10 @@ const getters = {
       if (currentState.eosAccount.refund_request) {
         return parseFloat(currentState.eosAccount.refund_request.net_amount) + parseFloat(currentState.eosAccount.refund_request.cpu_amount)
       } else if (process.env.NODE_ENV === 'development') {
-        console.debug('getStacked => eosAccount.voter_info is null...')
+        console.debug('getRefund => eosAccount.voter_info is null...')
       }
     } else if (process.env.NODE_ENV === 'development') {
-      console.debug('getStacked => eosAccount is null...')
+      console.debug('getRefund => eosAccount is null...')
     }
     return 0
   },
@@ -213,7 +214,7 @@ const getters = {
   getRamTotal: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getRam => currentState.eosAccount is null...')
+        console.debug('getRamTotal => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -225,7 +226,7 @@ const getters = {
   getRamUsed: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getRam => currentState.eosAccount is null...')
+        console.debug('getRamUsed => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -237,7 +238,7 @@ const getters = {
   getRamPercentage: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getRam => currentState.eosAccount is null...')
+        console.debug('getRamPercentage => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -266,7 +267,7 @@ const getters = {
   getNetTotal: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getNet => currentState.eosAccount is null...')
+        console.debug('getNetTotal => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -277,7 +278,7 @@ const getters = {
   getNetUsed: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getNet => currentState.eosAccount is null...')
+        console.debug('getNetUsed => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -288,7 +289,7 @@ const getters = {
   getNetPercentage: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getNet => currentState.eosAccount is null...')
+        console.debug('getNetPercentage => currentState.eosAccount is null...')
       }
       return 0
     }
@@ -298,43 +299,30 @@ const getters = {
   getCpuTotal: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getCpu => currentState.eosAccount is null...')
+        console.debug('getCpuTotal => currentState.eosAccount is null...')
       }
       return 0
     }
     return formatMicrosecond(currentState.eosAccount.cpu_limit.max)
-    // return getRestPercent(currentState.eosAccount, currentState.eosAccount.cpu_limit.used,
-    //   currentState.eosAccount.cpu_limit.max);
   },
   getCpuUsed: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getCpu => currentState.eosAccount is null...')
+        console.debug('getCpuUsed => currentState.eosAccount is null...')
       }
       return 0
     }
     return formatMicrosecond(currentState.eosAccount.cpu_limit.used)
-    // return getRestPercent(currentState.eosAccount, currentState.eosAccount.cpu_limit.used,
-    //   currentState.eosAccount.cpu_limit.max);
   },
   getCpuPercentage: (currentState) => {
     if (!currentState.eosAccount) {
       if (process.env.NODE_ENV === 'development') {
-        console.debug('getCpu => currentState.eosAccount is null...')
+        console.debug('getCpuPercentage => currentState.eosAccount is null...')
       }
       return 0
     }
     return getPercent(currentState.eosAccount, currentState.eosAccount.cpu_limit.used,
       currentState.eosAccount.cpu_limit.max)
-  },
-  getSymbol: (currentState) => {
-    if (!currentState.identityAccount || !currentState.identityAccount.blockchain) {
-      if (process.env.NODE_ENV === 'development') {
-        console.debug('getSymbol => currentState.identityAccount is null...')
-      }
-      return ''
-    }
-    return currentState.identityAccount.blockchain.toUpperCase()
   },
   getAccountNameWithAuthority() {
     return ''

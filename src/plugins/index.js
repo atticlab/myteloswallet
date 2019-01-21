@@ -15,6 +15,7 @@ import router from '../router'
 import ScatterJS from 'scatterjs-core'
 import ScatterEOS from 'scatterjs-plugin-eosjs'
 import bl from '../bl'
+import swal from 'sweetalert2'
 
 ScatterJS.plugins(new ScatterEOS())
 
@@ -56,5 +57,6 @@ library.add(faCubes, faWallet, faStickyNote, faFolderPlus, faAddressCard, faUniv
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 
-Vue.prototype.$scatterjs = ScatterJS
+Vue.prototype.$scatterjs = ScatterJS.scatter
+Vue.prototype.$swal = swal
 Vue.prototype.$bl = bl

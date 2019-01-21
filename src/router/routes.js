@@ -1,7 +1,7 @@
 import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
-const MobileDevice = () => import(/* webpackChunkName: "mobile" */ '../components/GeneralViews/MobileDevice.vue')
+const MobileDevice = () => import(/* webpackChunkName: "mobile" */ 'src/components/GeneralViews/MobileDevice.vue')
 
 // Dashboard pages
 // Actions (general)

@@ -155,7 +155,7 @@ export default {
               },
             },
           ],
-        },
+        }
       )
         .then((res) => {
           console.debug(`${this.$options.name} RESULT`, res);
@@ -165,21 +165,12 @@ export default {
             this[ActionType.SET_BALANCE](respBalance);
             this.$bl.logDebug('this.$bl.requestBalance(eos).then...', respBalance);
           });
-          this.getTokenBalances();
         })
         .catch((e) => {
           this[ActionType.SET_TRANSACTION](e);
           this.$bl.handleError(e, 'place-for-transaction');
         });
-    },
-    getTokenBalances() {
-      this.tokenList.forEach((token) => {
-        this.$bl.requestBalance(this.eos, this.eosAccount, token).then((respBalance) => {
-          this[ActionType.SET_TOKENBALANCE]({ balance: respBalance, symbol: token.symbol });
-          this.$bl.logDebug(`this.$bl.requestBalance(${token.symbol}).then...`, respBalance);
-        });
-      });
-    },
+    }
   },
 };
 </script>

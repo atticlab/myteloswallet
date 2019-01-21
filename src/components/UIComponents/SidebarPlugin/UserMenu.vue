@@ -23,14 +23,14 @@
                 <span class="sidebar-normal">Scatter</span>
               </a>
             </li>
-            <!--<li>-->
-              <!--<a href="#" @click="$emit('signInLedger')">-->
-                <!--<div class="photo">-->
-                  <!--<img src="/static/img/ledger.jpg"/>-->
-                <!--</div>-->
-                <!--<span class="sidebar-normal">Ledger Nano S</span>-->
-              <!--</a>-->
-            <!--</li>-->
+            <li>
+              <a href="#" @click="$emit('signInLedger')">
+                <div class="photo">
+                  <img src="/static/img/ledger.jpg"/>
+                </div>
+                <span class="sidebar-normal">Ledger Nano S</span>
+              </a>
+            </li>
             <li>
               <a href="#" @click="logout">
                 <div class="photo icon-wrap">
