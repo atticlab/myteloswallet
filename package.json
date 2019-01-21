@@ -5,7 +5,7 @@
   "description": "My Telos Wallet",
   "author": "Evgeny Fern <evgeny.fern@gmail.com>",
   "scripts": {
-    "build": "vue-cli-service build --no-clean --modern",
+    "build": "vue-cli-service build --no-clean",
     "dev": "vue-cli-service serve"
   },
   "dependencies": {
