@@ -83,10 +83,11 @@
       },
       balanceUpdate() {
         if (this.eos && this.eosAccount) {
-          this.$bl.requestBalance(this.eos, this.eosAccount).then((respBalance) => {
-            this[ActionType.SET_BALANCE](respBalance)
-            this.$bl.logDebug('bl.requestBalance(eos).then...', respBalance)
-          })
+          this.$bl.requestBalance(this.eos, this.eosAccount)
+              .then((respBalance) => {
+                this[ActionType.SET_BALANCE](respBalance)
+                this.$bl.logDebug('bl.requestBalance(eos).then...', respBalance)
+              })
         }
       },
       initIdentityAccount(identity) {
@@ -134,14 +135,11 @@
                          const eos = scatter.eos(vm.eosConfig, Eos, {expireInSeconds: 60})
                          vm[ActionType.SET_EOS_JS](eos)
 
-                         // console.log(eos)
                          eos.getAccount(account.name)
                             .then((respEosAccount) => {
                               this.$bl.logDebug(`getAccount('${account.name}').then((eosAccount) => ...`, respEosAccount)
                               this[ActionType.SET_EOS_ACCOUNT](respEosAccount)
-                              //
-                              //      // this.getTokenList();
-                              //      // this.balanceUpdate();
+                              this.balanceUpdate()
                             })
                             .catch(e => {
                               console.error('getAcc', e)
@@ -196,7 +194,7 @@
                             this[ActionType.SET_EOS_ACCOUNT](account)
                             this[ActionType.SET_IDENTITY_ACCOUNT]({
                               authority,
-                              name: account.account_name
+                              name: account.account_name,
                             })
                             this.balanceUpdate()
                           })
@@ -264,6 +262,7 @@
         'eosApi',
         'ledgerWallet',
         'currentNode',
+        'eosAccount',
       ]),
     },
   }

@@ -190,7 +190,7 @@ const getters = {
       if (currentState.eosAccount.refund_request) {
         return parseFloat(currentState.eosAccount.refund_request.net_amount) + parseFloat(currentState.eosAccount.refund_request.cpu_amount)
       } else if (process.env.NODE_ENV === 'development') {
-        console.debug('getRefund => eosAccount.voter_info is null...')
+        console.debug('getRefund => eosAccount.refund_request is null...')
       }
     } else if (process.env.NODE_ENV === 'development') {
       console.debug('getRefund => eosAccount is null...')
