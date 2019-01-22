@@ -125,7 +125,7 @@
                        .then((identity) => {
                          if (!identity) return console.error('no identity')
                          vm[ActionType.SET_IDENTITY](identity)
-                         console.dir(identity)
+                         // console.dir(identity)
                          // console.dir(vm.$scatterjs)
                          const account = this.initIdentityAccount(identity)
                          vm[ActionType.SET_IDENTITY_ACCOUNT](account)

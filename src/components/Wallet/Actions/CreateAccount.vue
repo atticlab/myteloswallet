@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-if="eosAccount">
+    <div class="row">
       <div class="col-md-8 col-12">
         <div class="card">
           <div class="card-header"><h4 class="title">Create account</h4></div>
@@ -333,13 +333,11 @@ export default {
         });
     },
     onCreateAccount() {
-      // const options = {
-      //   authorization: `${this.getAccountName}@${this.getAuthority}`,
-      // };
       if (!this.eos) {
         bl.logInPopUP();
         return;
       }
+
       this.eos.transaction({
         actions: [
           {
