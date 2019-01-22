@@ -223,9 +223,9 @@ export default {
           }
           this.prodToVote.push(this.eosAccount.voter_info.producers[prod]);
         }
-        if (!this.prodToVote.includes('atticlabeosb') && this.prodToVote.length < 30) {
-          this.prodToVote.push('atticlabeosb');
-          const obj = _.find(this.producers, {owner: 'atticlabeosb'});
+        if (!this.prodToVote.includes('atticlabtlbp') && this.prodToVote.length < 30) {
+          this.prodToVote.push('atticlabtlbp');
+          const obj = _.find(this.producers, {owner: 'atticlabtlbp'});
           if (obj) {
             this.$set(obj, 'choosed', true);
           }
@@ -299,9 +299,6 @@ export default {
           .catch(e => bl.handleError(e, 'place-for-transaction'));
         })
         .catch(e => bl.handleError(e, 'place-for-transaction'));
-    },
-    changeCurrentPageHandler(val) {
-      this.pagination.page = val;
     },
     addProdToVoteArray(prod, choice) {
       const index = _.findIndex(this.producers, {owner: prod});

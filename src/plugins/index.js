@@ -16,18 +16,24 @@ import ScatterJS from 'scatterjs-core'
 import ScatterEOS from 'scatterjs-plugin-eosjs'
 import bl from '../bl'
 import swal from 'sweetalert2'
+import {Table, TableColumn} from 'element-ui'
 
 ScatterJS.plugins(new ScatterEOS())
 
 // plugin setup
-Vue.use(GlobalDirectives)
-Vue.use(GlobalComponents)
 Vue.use(VueNotify, {type: 'primary', timeout: 5000})
 Vue.use(SideBar, {sidebarLinks: sidebarLinks})
 Vue.use(VueClipboard)
 Vue.use(VeeValidate)
 locale.use(lang)
 
+// theme components
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(GlobalDirectives)
+Vue.use(GlobalComponents)
+
+// veevalidate
 Vue.use(VeeValidate, {
   events: 'paste|input|blur|change',
 })
@@ -44,6 +50,7 @@ Vue.use(VueAnalytics, {
   router,
 })
 
+// resource
 Vue.use(VueResource)
 // Vue.http.options.root = process.env.VUE_APP_BASE_URL
 
@@ -56,7 +63,7 @@ library.add(faCubes, faWallet, faStickyNote, faFolderPlus, faAddressCard, faUniv
   faTrophy, faAngleLeft, faAngleRight, faBars, faCopy, faRandom, faPlusSquare, faSignOutAlt, faSignInAlt );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-
+// prototypes
 Vue.prototype.$scatterjs = ScatterJS.scatter
 Vue.prototype.$swal = swal
 Vue.prototype.$bl = bl

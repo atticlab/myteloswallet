@@ -268,6 +268,8 @@
     },
   }
 </script>
-<style lang="scss">
-
+<style>
+  .select-primary.el-select .el-input input, span.el-tag, .card {
+    border-radius: 4px !important;
+  }
 </style>

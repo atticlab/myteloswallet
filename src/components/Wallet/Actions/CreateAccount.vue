@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-md-8 col-12">
         <div class="card">
-          <div class="card-header"><h4 class="title">Create account without existing account (for free)</h4></div>
+          <!--<div class="card-header"><h4 class="title">Create account without existing account (for free)</h4></div>-->
+          <div class="card-header"><h4 class="title">Generate random account</h4></div>
           <div class="card-body">
             <form id="withoutAccountForm">
               <div class="row">
@@ -46,7 +47,7 @@
               </div>
 
               <div class="row text-center">
-                <div class="col-4">
+                <div class="col-6">
                   <el-tooltip content="Randomize Name and Keypairs" placement="top">
                     <p-button @click="random" type="primary">
                       <font-awesome-icon icon="random" />
@@ -54,20 +55,20 @@
                   </el-tooltip>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                   <el-tooltip content="Copy Name and Keypairs to clipboard" placement="top">
                     <p-button @click="copy" type="primary">
                       <font-awesome-icon icon="copy" />
                     </p-button>
                   </el-tooltip>
                 </div>
-                <div class="col-4">
-                  <el-tooltip content="Create Account" placement="top">
-                    <p-button @click="withoutAccountonCreateAccount" :disabled="withoutAccountcreateAccountValidation" type="primary">
-                      <font-awesome-icon icon="plus-square" />
-                    </p-button>
-                  </el-tooltip>
-                </div>
+                <!--<div class="col-4">-->
+                  <!--<el-tooltip content="Create Account" placement="top">-->
+                    <!--<p-button @click="withoutAccountonCreateAccount" :disabled="withoutAccountcreateAccountValidation" type="primary">-->
+                      <!--<font-awesome-icon icon="plus-square" />-->
+                    <!--</p-button>-->
+                  <!--</el-tooltip>-->
+                <!--</div>-->
               </div>
 
               <div class="row">
