@@ -8,13 +8,13 @@
           <div class="card-body text-center">
             <div class="row">
               <div class="col">
-                <p>Total: {{ (getBalance + getStacked + getRefund).toFixed(4) }} EOS</p>
-                <p>Refund: {{ getRefund }} EOS</p>
+                <p>Total: {{ (getBalance + getStacked + getRefund).toFixed(4) }} TLOS</p>
+                <p>Refund: {{ getRefund }} TLOS</p>
               </div>
 
               <div class="col">
-                <p>Unstaked: {{ getBalance }} EOS</p>
-                <p>Staked: {{ getStacked }} EOS</p>
+                <p>Unstaked: {{ getBalance }} TLOS</p>
+                <p>Staked: {{ getStacked }} TLOS</p>
               </div>
 
               <div class="col">

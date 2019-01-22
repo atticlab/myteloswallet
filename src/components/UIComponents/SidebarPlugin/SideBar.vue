@@ -7,7 +7,7 @@
                    :to="{ name: 'Dashboard' }">
         <!--<div class="logo-img" >-->
         <!--<font-awesome-icon icon="wallet" style="color: black"/>-->
-        <img src="/static/img/logo/atticlab-logo-500_white.png" alt="logo atticlab">
+        <img src="/static/img/logo/telos_logo.png" alt="logo atticlab">
         <!--</div>-->
       </router-link>
       <router-link tag="a" class="simple-text logo-normal"
