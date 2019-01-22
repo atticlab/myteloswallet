@@ -5,19 +5,22 @@
         <div class="card-header"><h3 class="title">FAQ</h3></div>
         <div class="card-body">
           <h4>Transfer</h4>
-          <p class="">You can send EOS or EOS tokens to as many users as you like. Please be careful when checking the recipient’s address and remember the memo when sending tokens to exchange.</p>
+          <p class="">You can send TLOS to as many users as you like. Please be careful when checking the recipient’s address and remember the memo when sending tokens to exchange.</p>
 
           <h4>Create account</h4>
-          <p class="">Please follow the tips on the background. Enter account name, owner key, active key, cpu, net and ram to stake and click ‘Create Account’.</p>
+          <p class="">To create an account you need to generate the name and the key pairs. You can do it either through Scatter or My Telos Wallet.
+            To generate the name and the key pairs in My Telos Wallet go to the window ‘Generate random account’ and click the button ‘Randomize Name and Keypairs’.
+            Use the button ‘Copy Name and Keypairs to clipboard’ to copy all the generated data and save it in a secure place. Note that we strongly advise writing this information down manually as well.
+            Then go to the window 'Create account' and click the button ‘Create Account’. That’s it, you now have a Telos account. You can log in to your account either using My Telos Wallet.
+            In case you still have any questions feel free to contact us - <a href="mailto:myteloswalletsup@gmail.com"> myteloswalletsup@gmail.com</a>
+            <br>Note: Attic Lab does not use or store your personal data.
+          </p>
 
           <h4>Vote Producer</h4>
           <p class="">Ensure there are tokens available to be staked for CPU and NET
       Select up to 30 Block Producers listed.
       Hit ‘the Vote’ button or reset if you want to change your BP.</p>
 
-          <h4>Register Proxy Info</h4>
-          <p class="">The dApp allows EOS proxy accounts to reg and place useful info about themselves, for instance, name, website, philosophy or slogan. This info is placed on the EOS and free for sharing through the portals.
-      Please follow all the tips mentioned in the background.</p>
 
           <h4>Set proxy / Register Proxy Info</h4>
           <p class="">Using a proxy option you can vote on behalf of others who set you as their proxy. Please fill in the proxy info that you want to assign. To resign a proxy you just cancel the weight and ability to vote on behalf of others who set you as their proxy.</p>
@@ -32,7 +35,7 @@
           <p class="">After applying this command, you won’t be able to vote via proxy. You can vote via proxy again by executing the action at <router-link :to="{ name: 'AssignProxy' }">Assign Proxy</router-link></p>
 
           <h4>Advanced permissions</h4>
-          <p class=""><b>Caution:</b> this action makes your account irrecoverable. The permission structures of EOS accounts are complex, and they include parent-child relationships. Parent permissions can alter or remove child permissions. To add or modify permissions, Threshold must have a sum of permission weights. You can add, change and create new permissions. “Weight” is the amount of weight assigned to Threshold by Authority. To meet your multisig requirements, you can add or remove as many rows as you need.</p>
+          <p class=""><b>Caution:</b> this action makes your account irrecoverable. The permission structures of TELOS accounts are complex, and they include parent-child relationships. Parent permissions can alter or remove child permissions. To add or modify permissions, Threshold must have a sum of permission weights. You can add, change and create new permissions. “Weight” is the amount of weight assigned to Threshold by Authority. To meet your multisig requirements, you can add or remove as many rows as you need.</p>
 
           <h4>Remove a permission</h4>
           <p class="">Specify the Permission and Parent, and leave a single Authority row empty with the default Weight of 1.</p>
@@ -54,7 +57,7 @@
           <p class="">Refunding your takes 72 hours. Be aware of the non-immediate action. Please click the button in case you want to refund.</p>
 
           <h4>Stake</h4>
-          <p class="">There are three resources running on the EOS network: CPU, NET and RAM. When staking, you delegate some access to CPU and NET. To stake your tokens, you need to follow the instructions tipped on the background. You can unstake tokens by clicking ‘unstake’, the period of set after the moment of clicking the button is three days.</p>
+          <p class="">There are three resources running on the TELOS network: CPU, NET and RAM. When staking, you delegate some access to CPU and NET. To stake your tokens, you need to follow the instructions tipped on the background. You can unstake tokens by clicking ‘unstake’, the period of set after the moment of clicking the button is three days.</p>
 
           <h4>Name action</h4>
 
@@ -68,9 +71,6 @@
 
           <h4>Unregister Producer</h4>
           <p class="">If you wish to unregister a Block Producer, enter the account and click ‘unreg producer’.</p>
-
-          <h4>Airgrab tokens</h4>
-          <p class="">Look through the list, choose and click ‘AIRGRAB’. You could add any other in case you can’t find your preference on the list. Enjoy the option.</p>
 
         </div>
       </div>

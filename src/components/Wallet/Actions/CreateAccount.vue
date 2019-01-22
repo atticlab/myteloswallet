@@ -82,9 +82,10 @@
         <div class="card">
           <div class="card-header"><h4 class="title">Help</h4></div>
           <div class="card-body pb-4">
-            <div>To generate the name and the key pairs in My Telos Wallet go to the window ‘Generate random account’ and click the button ‘Randomize Name and Keypairs’.
+            <div>To create an account you need to generate the name and the key pairs. You can do it either through Scatter or My Telos Wallet.
+              To generate the name and the key pairs in My Telos Wallet go to the window ‘Generate random account’ and click the button ‘Randomize Name and Keypairs’.
               Use the button ‘Copy Name and Keypairs to clipboard’ to copy all the generated data and save it in a secure place. Note that we strongly advise writing this information down manually as well.
-              Then go to the window 'Create account' and click the button ‘Create Account’.
+              Then go to the window 'Create account' and click the button ‘Create Account’. That’s it, you now have a Telos account. You can log in to your account either using My Telos Wallet.
               In case you still have any questions feel free to contact us - <a href="mailto:myteloswalletsup@gmail.com"> myteloswalletsup@gmail.com</a>
               <br>Note: Attic Lab does not use or store your personal data.
             </div>
