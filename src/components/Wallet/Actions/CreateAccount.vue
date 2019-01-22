@@ -82,11 +82,12 @@
         <div class="card">
           <div class="card-header"><h4 class="title">Help</h4></div>
           <div class="card-body pb-4">
-            <div>Create an account on TELOS for free. Attic lab provides a new option for those who really need it. First of all, before creating, you need to generate your keys. And there are two ways available: through Scatter or via My Telos Wallet. Note: Attic undertakes not to use the Service for any illegal business or behind the reasons mentioned(no remembering or storing that kind of private info).
-              Please choose an account name with up to 12 a-z, 1-5 symbols or generate it clicking the button on the right. Once you generate your keys through Scatter, generate active and owner public key and fill that relevantly. The private key must be kept in the safest place possible and never to be shared.
-              If generate, do & use My Telos Wallet- generate your keys, copy the key pairs and save it in the place you only know. Hit the button ‘Create an account’ and enjoy all the options of TELOS-world.
-              Log in to your new account you could through Scatter that comes with a wide range of options at hand.
-              In case you still have any questions feel free to contact us - <a href="mailto:myteloswalletsup@gmail.com"> myteloswalletsup@gmail.com</a></div>
+            <div>To generate the name and the key pairs in My Telos Wallet go to the window ‘Generate random account’ and click the button ‘Randomize Name and Keypairs’.
+              Use the button ‘Copy Name and Keypairs to clipboard’ to copy all the generated data and save it in a secure place. Note that we strongly advise writing this information down manually as well.
+              Then go to the window 'Create account' and click the button ‘Create Account’.
+              In case you still have any questions feel free to contact us - <a href="mailto:myteloswalletsup@gmail.com"> myteloswalletsup@gmail.com</a>
+              <br>Note: Attic Lab does not use or store your personal data.
+            </div>
           </div>
         </div>
       </div>
@@ -170,7 +171,7 @@
         <div class="card">
           <div class="card-header"><h4 class="title">Help</h4></div>
           <div class="card-body pb-4">
-            <div>Please follow the tips on the background. Enter account name, owner key, active key, cpu, net and ram to stake and click ‘Create Account’.</div>
+            <div>Enter account name, owner key, active key, cpu, net and ram to stake and click ‘Create Account’.</div>
           </div>
         </div>
       </div>
