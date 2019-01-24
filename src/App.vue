@@ -86,7 +86,7 @@
       noSupportScatter() {
         this.$swal({
           title: 'Web Extension Scatter is not supported!',
-          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter Desktop</a> and refresh this page.',
+          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter Desktop</a>, disable or remove Web Extension and refresh this page.',
           buttonsStyling: false,
           showCloseButton: true,
           confirmButtonClass: 'btn btn-info btn-fill',
