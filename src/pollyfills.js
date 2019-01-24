@@ -1,5 +1,6 @@
 /* eslint-disable */
 import 'es6-promise/auto'
+
 export default (function initPollyFills() {
 if (!String.prototype.startsWith) {
   String.prototype.startsWith = function(searchString, position) {

@@ -64,6 +64,6 @@ library.add(faCubes, faWallet, faStickyNote, faFolderPlus, faAddressCard, faUniv
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 // prototypes
-Vue.prototype.$scatterjs = ScatterJS.scatter
+Vue.prototype.$scatterjs = ScatterJS
 Vue.prototype.$swal = swal
 Vue.prototype.$bl = bl
