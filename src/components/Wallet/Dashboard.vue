@@ -22,7 +22,7 @@
 
           <div class="row">
             <div class="col-12">
-              <p>If you are going to <b>use Scatter</b>, we recommend Google Chrome, Opera or Mozilla Firefox.
+              <p>If you are going to <b>use Scatter Desktop</b>, you can use Google Chrome, Opera, Mozilla Firefox, Edge and Safari from version 9.2.0.
                 <br>If you are planning to <b>use Ledger</b>, we recommend using Google Chrome.
               </p>
               <p>However, note that some of the wallet functions are not supported by the Ledger.
