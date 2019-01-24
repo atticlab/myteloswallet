@@ -21,3 +21,5 @@ selenium-debug.log
 /package-lock.json
 .env
 .npm
+
+documentation/
