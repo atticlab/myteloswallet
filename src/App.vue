@@ -76,7 +76,7 @@
       noScatterAlert() {
         this.$swal({
           title: 'No scatter detected!',
-          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter desktop application</a> and refresh this page.',
+          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter Desktop application</a> and refresh this page.',
           buttonsStyling: false,
           showCloseButton: true,
           confirmButtonClass: 'btn btn-info btn-fill',
