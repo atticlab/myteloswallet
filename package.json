@@ -20,7 +20,7 @@
     "d3": "^5.7.0",
     "datamaps": "^0.5.9",
     "element-ui": "^2.4.11",
-    "eosjs": "^16.0.9",
+    "eosjs": "16.0.0",
     "eosjs-ecc": "^4.0.4",
     "fcbuffer": "^2.2.2",
     "fullcalendar": "^4.0.0-alpha.3",

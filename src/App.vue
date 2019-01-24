@@ -132,8 +132,8 @@
                          vm[ActionType.SET_IDENTITY_ACCOUNT](account)
                          // console.log(account)
                          // console.log(vm.eosConfig)
-                         const eos = scatter.eos(vm.eosConfig, Eos)
-                         vm[ActionType.SET_EOS_JS](eos)
+                         const eos = scatter.scatter.eos(scatter.Network.fromJson(vm.eosConfig), Eos)
+                         this[ActionType.SET_EOS_JS](eos)
 
                          eos.getAccount(account.name)
                             .then((respEosAccount) => {
