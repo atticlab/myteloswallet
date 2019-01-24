@@ -78,8 +78,20 @@
           title: 'No scatter detected!',
           html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter plugin or desktop application</a> and refresh this page.',
           buttonsStyling: false,
+          showCloseButton: true,
           confirmButtonClass: 'btn btn-info btn-fill',
         })
+          .catch(() => {})
+      },
+      noSupportScatter() {
+        this.$swal({
+          title: 'Web Extension Scatter is not supported!',
+          html: 'Please <a href="https://get-scatter.com/" target="_blank">install Scatter Desktop</a> and refresh this page.',
+          buttonsStyling: false,
+          showCloseButton: true,
+          confirmButtonClass: 'btn btn-info btn-fill',
+        })
+            .catch(() => {})
       },
       balanceUpdate() {
         if (this.eos && this.eosAccount) {
@@ -114,7 +126,10 @@
                 this.noScatterAlert()
                 return false
               }
-
+              if (window.scatter) {
+                this.noSupportScatter()
+                return false
+              }
               const scatter = this.$scatterjs
               window.scatter = null
               window.ScatterJS = null
@@ -132,7 +147,7 @@
                          vm[ActionType.SET_IDENTITY_ACCOUNT](account)
                          // console.log(account)
                          // console.log(vm.eosConfig)
-                         const eos = scatter.scatter.eos(scatter.Network.fromJson(vm.eosConfig), Eos)
+                         const eos = scatter.eos(vm.eosConfig, Eos)
                          this[ActionType.SET_EOS_JS](eos)
 
                          eos.getAccount(account.name)
