@@ -46,7 +46,7 @@ validationRules.forEach((item) => {
 
 // google analytics
 Vue.use(VueAnalytics, {
-  id: 'UA-12',
+  id: 'UA-133152701-1',
   router,
 })
 
