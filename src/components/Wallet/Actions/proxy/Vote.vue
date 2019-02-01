@@ -322,10 +322,22 @@ export default {
       this.producerToDisplay = [];
       this.producerToDisplay = this.producers.slice(this.pagination.itemPerPage * (this.pagination.page - 1), this.pagination.itemPerPage * this.pagination.page);
     },
+    getPaymentsTable() {
+      if (!this.eosApi) {
+        return;
+      }
+
+      this.eosApi.getTableRows(true, 'eosio', 'eosio', 'payments', '', 0, -1, 7001)
+        .then((response) => {
+
+        })
+        .catch(e => bl.handleError(e, 'place-for-transaction'));
+    }
   },
   mounted() {
     this.getAlreadyVoted();
     this.getProducers();
+    this.getPaymentsTable();
   },
   watch: {
     eosAccount() {
@@ -333,6 +345,7 @@ export default {
     },
     eosApi() {
       this.getProducers();
+      this.getPaymentsTable();
     },
     pagination: {
       handler() {
