@@ -120,6 +120,11 @@ export default {
       producerToDisplay: [],
       disablePickProd: false,
       searchQuery: '',
+      isLoaded: {
+        producers: false,
+        payments: false
+      },
+      producerRewards: []
     };
   },
   components: {
@@ -273,21 +278,10 @@ export default {
             // eslint-disable-next-line
             for (const index in this.producers) {
               const position = parseInt(index, 10) + 1;
-              let reward = 0;
               const percentageVotes = (this.producers[index].total_votes / (this.chainStatus.total_producer_vote_weight));
-              const percentageVotesRewarded = ((this.producers[index].total_votes / (this.chainStatus.total_producer_vote_weight - votesToRemove)) * 100);
 
-              reward += percentageVotesRewarded * 200;
-
-              if (percentageVotes * 200 * 100 < 100) {
-                reward = 0;
-              }
-
-              if (position < 22) {
-                reward += 318;
-              }
               this.producers[index].position = position;
-              this.producers[index].reward = reward.toFixed(0);
+              this.producers[index].reward = 0
               this.producers[index].votesPercent = percentageVotes.toFixed(4);
               this.producers[index].numVotes = (this.producers[index].total_votes / voteWeight / 10000).toFixed(0);
               this.producers[index].choosed = false;
@@ -295,6 +289,7 @@ export default {
             this.getAlreadyVoted();
             this.loading = false;
             this.pagination.totalItems = this.producers.length;
+            this.isLoaded.producers = true;
           })
           .catch(e => bl.handleError(e, 'place-for-transaction'));
         })
@@ -322,16 +317,44 @@ export default {
       this.producerToDisplay = [];
       this.producerToDisplay = this.producers.slice(this.pagination.itemPerPage * (this.pagination.page - 1), this.pagination.itemPerPage * this.pagination.page);
     },
-    getPaymentsTable() {
+    async getPaymentsTable() {
       if (!this.eosApi) {
         return;
       }
 
-      this.eosApi.getTableRows(true, 'eosio', 'eosio', 'payments', '', 0, -1, 7001)
-        .then((response) => {
+      let res = [];
+      let lowerBound = 0
+      while (1) {
+        try {
+          let temp = await this.getPaymentsTableParams(lowerBound)
+          res = res.concat(temp.rows);
+          if (temp.rows.length) {
+            lowerBound = temp.rows[temp.rows.length - 1].bp
+          }
+          if (!res.more) {
+            break
+          }
+        } catch (e) {
+          console.error(e)
+          break
+        }
+      }
+      this.producerRewards = res;
 
+      this.isLoaded.payments = true;
+    },
+    getPaymentsTableParams(lowerBound) {
+      return this.eosApi.getTableRows({
+          json: true,
+          code: 'eosio',
+          scope: 'eosio',
+          table: 'payments',
+          lower_bound: lowerBound,
+          limit: 1000,
         })
-        .catch(e => bl.handleError(e, 'place-for-transaction'));
+        .then((response) => {
+          return response
+        })
     }
   },
   mounted() {
@@ -360,6 +383,26 @@ export default {
         this.producerToDisplay = this.queriedData.slice(this.pagination.itemPerPage * (this.pagination.page - 1), this.pagination.itemPerPage * this.pagination.page);
       }
     },
+    'isLoaded.producers'() {
+      if (this.isLoaded.producers && this.isLoaded.payments) {
+        for (let i = 0; i < this.producers.length; i++) {
+          const obj = _.find(this.producerRewards, { bp: this.producers[i].owner });
+          if (!obj) continue
+
+          this.producers[i].reward = parseFloat(obj.pay)
+        }
+      }
+    },
+    'isLoaded.payments'() {
+      if (this.isLoaded.producers && this.isLoaded.payments) {
+        for (let i = 0; i < this.producers.length; i++) {
+          const obj = _.find(this.producerRewards, { bp: this.producers[i].owner });
+          if (!obj) continue
+
+          this.producers[i].reward = parseFloat(obj.pay)
+        }
+      }
+    }
   },
 };
 </script>
